@@ -1,0 +1,7 @@
+categories=("Music" "Entertainment" "Gaming" "Comedy")
+
+# Iterate over the categories
+for category in "${categories[@]}"; do
+    # Use awk to filter entries and redirect to the respective category file
+    awk -F',' -v category="$category" '$8 == "United States" && $5 == category' 'Global YouTube Statistics.csv' > "$category.csv"
+done
