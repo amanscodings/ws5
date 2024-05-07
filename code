@@ -1,0 +1,17 @@
+#!/bin/bash
+values=("United States" "Canada" "Australia")
+
+# Iterate over each value
+for value in "${values[@]}"
+do
+    # Use awk to count occurrences of the value in column 8
+awk -F',' '$8 == "United States" && $5 == "Music" { count++ }END { print count }' 'Global YouTube Statistics.csv'
+awk -F',' '$8 == "United States" && $5 == "Entertainment" { count++ }END { print count }' 'Global YouTube Statistics.csv'
+awk -F',' '$8 == "United States" && $5 == "Gaming" { count++ }END { print count }' 'Global YouTube Statistics.csv'
+awk -F',' '$8 == "United States" && $5 == "Comedy" { count++ }END { print count }' 'Global YouTube Statistics.csv'
+
+     
+
+    # Output the count
+    echo "Number of output of $value in column 8: $count"
+done
